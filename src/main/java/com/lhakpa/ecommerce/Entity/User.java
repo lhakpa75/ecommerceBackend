@@ -2,6 +2,8 @@ package com.lhakpa.ecommerce.Entity;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
+
 @Entity
 public class User {
     @Id
@@ -35,5 +37,16 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @OneToMany(mappedBy = "user")
+    private Collection<CustomerOrder> customerOrder;
+
+    public Collection<CustomerOrder> getCustomerOrder() {
+        return customerOrder;
+    }
+
+    public void setCustomerOrder(Collection<CustomerOrder> customerOrder) {
+        this.customerOrder = customerOrder;
     }
 }
